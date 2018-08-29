@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+    compileSdkVersion 28
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildToolsVersion "28.0.1"
+    defaultConfig {
+        applicationId "mobile.egn.com.mobile"
+
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.version.code
+        versionName buildConfig.version.name
+
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // progaurds
+        proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                'proguard-rules.pro',
+                '../proguards/proguard-support-v7-appcompat.pro',
+                '../proguards/proguard-calligraphy-2.1.0.pro',
+                '../proguards/proguard-crashlytics-2.pro',
+                '../proguards/proguard-glide.pro',
+                '../proguards/proguard-google-play-services.pro',
+                '../proguards/proguard-rx-java.pro',
+                '../proguards/proguard-square-okio.pro',
+                '../proguards/proguard-square-okhttp3.pro',
+                '../proguards/proguard-square-retrofit2.pro',
+                '../proguards/proguard-dagger2.pro',
+                '../proguards/proguard-moshi.pro'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            useProguard true
+            shrinkResources true
+
+        }
+        debug {
+            minifyEnabled false
+            useProguard false
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    api project(':androidxcore')
+    implementation project(':shared')
+}
