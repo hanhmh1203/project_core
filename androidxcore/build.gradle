@@ -78,6 +78,7 @@ dependencies {
     implementation deps.okhttp.client
     api deps.retrofit.client
     api deps.retrofit.koroutine
+    api deps.retrofit.adapter
 
     // Views
 

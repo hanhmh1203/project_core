@@ -58,6 +58,7 @@ android {
 dependencies {
     api project(':androidxcore')
     implementation project(':model')
+    api deps.retrofit.adapter
 }
 kotlin {
     experimental {
