@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">shared</string>
+    <string name="title_activity_fire_base">FireBase</string>
+    <string name="action_settings">Settings</string>
 </resources>

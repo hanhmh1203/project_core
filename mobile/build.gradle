@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -60,4 +61,6 @@ android {
 dependencies {
     api project(':androidxcore')
     implementation project(':shared')
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
+
 }
