@@ -26,8 +26,12 @@ import com.google.android.gms.tasks.OnSuccessListener
 import kotlinx.android.synthetic.main.fragment_auth.*
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
-
-
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.withContext
+import mobile.egn.com.mobile.test
+import org.jetbrains.anko.UI
+import kotlin.math.abs
 
 
 class AuthFragment : BaseFragment() {
@@ -36,7 +40,44 @@ class AuthFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
+        solution()
+    }
 
+    fun solution() {
+//        val a = Int[{ 1, 3, 6, 4, 1, 2 }]
+        val a: IntArray = intArrayOf(1, 3, 6, 4, 1, 2 )
+//        val a = arrayListOf<Int>(-10, -3, -6, -4, -7, -2,-1)
+//        var value = 1
+//        while (!inArray(value, a)) {
+//            value++
+//        }
+//
+//
+//        Log.i("hanhmh1203", "${value}")
+        val test = test()
+        test.solution(a)
+    }
+
+    fun inArray(value: Int, array: List<Int>): Boolean {
+        if (value in array) {
+            return false
+        }
+        return true
+    }
+
+    fun examCoru(){
+        launch {
+            async {
+
+            }.await()
+            withContext(UI){
+
+            }
+            withContext(UI){
+
+            }
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -44,17 +85,17 @@ class AuthFragment : BaseFragment() {
         button.setOnClickListener {
             fireStore()
         }
-        button2.setOnClickListener{
+        button2.setOnClickListener {
             readData()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            updateUI(currentUser)
-        }
+//        val currentUser = auth.currentUser
+//        if (currentUser != null) {
+//            updateUI(currentUser)
+//        }
     }
 
     fun updateUI(user: FirebaseUser) {
@@ -104,7 +145,8 @@ class AuthFragment : BaseFragment() {
                     Log.e("updatedb", "Error adding document", it)
                 }
     }
-    fun readData(){
+
+    fun readData() {
         val TAG = "readdata"
         db.collection("users")
                 .get()
